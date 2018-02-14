@@ -3,7 +3,7 @@
 export let apiCall = function(location, proximity) {
   return new Promise(function(resolve, reject) {
     let request = new XMLHttpRequest();
-    let url = `https://bikeindex.org:443/api/v2/bikes_search/stolen?page=1&proximity=${location}&proximity_square=${proximity}`;
+    let url = `https://bikeindex.org:443/api/v2/bikes_search/stolen?page=1&per_page=50&proximity=${location}&proximity_square=${proximity}`;
     console.log(url);
     request.onload = function() {
       if (this.status === 200) {

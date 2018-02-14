@@ -13,8 +13,9 @@ $(document).ready(function() {
     newApiCall.then(function(response) {
       let body = JSON.parse(response);
       for (var i = 0; i < body.bikes.length; i++) {
-        let date = new moment(body.bikes[i].date_stolen);
-        let formatted = date.format("dddd MMMM DDDo, YYYY");
+        let date = new moment();
+        date.unix(body.bikes[i].date_stolen);
+        let formatted = date.format("dddd MMMM Do, YYYY");
         if(body.bikes[i].thumb != null) {
           $('#results').append('<div class="list-item"><li><img src="' + body.bikes[i].thumb + '"><ul><li>' + body.bikes[i].title +'</li><li>'+ body.bikes[i].frame_colors +'</li><li>' + body.bikes[i].stolen_location + '</li><li>'+ formatted +'</li></ul></li></div>');
         } else {
