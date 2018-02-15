@@ -7,8 +7,10 @@ $(document).ready(function() {
     event.preventDefault();
     let location = $('#location').val();
     let proximity = parseInt($('#proximity').val());
+    let color= $('#color').val();
+    let newApiCall = apiCall(location, proximity, color);
 
-    let newApiCall = apiCall(location, proximity);
+    $('#results').empty();
 
     newApiCall.then(function(response) {
       let body = JSON.parse(response);
